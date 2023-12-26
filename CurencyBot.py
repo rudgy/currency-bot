@@ -1,17 +1,17 @@
 import telebot
-import config
+from config import tbot
 
-bot = telebot.TeleBot('5875528627:AAGUyFJl3IyGPHn5V9RcOz_OcquJRl2OFA0')
+bot = telebot.TeleBot(tbot)
 #bot = telebot.TeleBot()
 
 @bot.message_handler(commands=['start'])
 def main(message):
-    bot.send_message(message.chat.id, 'Hello!')
+    bot.send_message(message.chat.id, f'Hello! {message.from_user.first_name}')
 
 
 @bot.message_handler(commands=['help'])
 def help(message):
-    bot.send_message(message.chat.id, 'Help information')
+    bot.send_message(message.chat.id, message)
 
 @bot.message_handler(commands=['about'])
 def about(message):
